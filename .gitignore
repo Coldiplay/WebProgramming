@@ -1,0 +1,15 @@
+# PhpStorm project files
+.idea/
+
+# Composer dependencies
+/vendor/
+# Пример
+/2025
+
+# Log files
+*.log
+*.tmp
+
+# Operating system specific files
+.DS_Store
+Thumbs.db
