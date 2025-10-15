@@ -1,7 +1,16 @@
 <?php
-    require __DIR__.'/vendor/autoload.php';
+
+use App\Controllers\ArticleController;
+use App\Views\ArticleView;
+
+require __DIR__.'/vendor/autoload.php';
     error_reporting(E_ALL);
     ini_set('display_errors', 'on');
+
+    $article_view = new ArticleView();
+    $articles = new \App\Models\Articles();
+    $article_controller = new \App\Controllers\ArticlesController($articles, $article_view);
+
 ?>
 
 
