@@ -1,16 +1,33 @@
 <?php
 
-use App\Controllers\ArticleController;
-use App\Views\ArticleView;
+use App\Controllers\ArticlesController;
+use App\Model\Articles;
+use resources\views\ArticlesView;
 
 require __DIR__.'/vendor/autoload.php';
-    error_reporting(E_ALL);
-    ini_set('display_errors', 'on');
 
-    $article_view = new ArticleView();
-    $articles = new \App\Models\Articles();
-    $article_controller = new \App\Controllers\ArticlesController($articles, $article_view);
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
 
+//    error_reporting(E_ALL);
+//    ini_set('display_errors', 'on');
+
+    $articles = new Articles();
+    $articles_view = new ArticlesView();
+    $articles_controller = new ArticlesController($articles, $articles_view);
+
+    $uri = $_SERVER['REQUEST_URI'];
+    switch ($uri)
+    {
+        case "/":
+            echo "test";
+            break;
+
+        default:
+            echo $uri;
+            break;
+    }
 ?>
 
 

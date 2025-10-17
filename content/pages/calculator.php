@@ -1,4 +1,4 @@
-<?php include_once ('./templates/header.php') ?>
+<?php include_once('./templates/header.php') ?>
     <header>
         <h1>Калькулятор</h1>
     </header>
@@ -20,7 +20,7 @@
                     <button type="submit">Рассчитать</button>
                 </form>
 
-                <?php include_once ('scripts/calculate.php')
+                <?php include_once('scripts/calculate.php')
 //                if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //                    $num1 = $_POST["num1"];
 //                    $num2 = $_POST["num2"];
@@ -42,7 +42,7 @@
                 {
                     $history = file_get_contents("history.txt");
                     echo "<h3>История операций</h3>";
-                    echo '<form method="post" action="scripts/clearHistory.php"><button type="submit">Очистить историю</button></form>';
+                    echo '<form method="post" action="../../scripts/clearHistory.php"><button type="submit">Очистить историю</button></form>';
                     echo "<pre>$history</pre>";
                 }
                 ?>

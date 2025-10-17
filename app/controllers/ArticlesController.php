@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Controllers;
+namespace app\controllers;
 
-use App\Models\Articles;
-use App\Views\ArticleView;
+use app\model\Articles;
+use resources\views\ArticlesView;
 
 class ArticlesController
 {
     public Articles $articles;
-    public ArticleView $articleView;
+    public ArticlesView $articleView;
 
-    public function __construct(Articles $articles, ArticleView $articleView)
+    public function __construct(Articles $articles, ArticlesView $articleView)
     {
         $this->articles = $articles;
         $this->articleView = $articleView;
