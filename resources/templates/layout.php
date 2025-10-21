@@ -90,23 +90,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8">
+
                         <?php echo $data; ?>
-                        <div class="single-post">
-                            <div class="blog-img">
-                                <a href="">
-                                    <img src="assets/images/slider-img.jpg" class="img-responsive">
-                                </a>
-                                <div class="blog-icon"><img src="assets/images/icon2.png"></div>
-                            </div>
-                            <h2 class="blog-title">Image Post For Insurance Press</h2>
-                            <div class="blog-meta">2 Feb 2018 <a href="">(3) Comments</a></div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit fringilla ligula, nec congue leosdsdsd pharetra in.lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit fringilla ligula, nec congue leo pharetra in.</p>
-                            <div class="blog-btn">
-                                <a href="#" class="btn-default">Read More</a>
-                                <div class="img-inline"><img src="assets/images/people-03.jpg"><a href="#">By Linda</a>
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="text-center">
                             <ul class="pagination ins-page">

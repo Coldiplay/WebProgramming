@@ -1,7 +1,7 @@
 <?php
 
 use App\Controllers\ArticlesController;
-use App\Model\Articles;
+use App\Model\Article;
 use App\Views\ArticlesView;
 
 
@@ -16,9 +16,9 @@ $whoops->register();
 //    error_reporting(E_ALL);
 //    ini_set('display_errors', 'on');
 
-    $articles = new Articles();
+    $article = new Article();
     $articles_view = new ArticlesView();
-    $articles_controller = new ArticlesController($articles, $articles_view);
+    $articles_controller = new ArticlesController($article, $articles_view);
 
     $uri = $_SERVER['REQUEST_URI'];
     switch ($uri)
