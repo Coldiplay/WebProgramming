@@ -2,11 +2,14 @@
 
 use App\Controllers\ArticlesController;
 use App\Model\Articles;
-use resources\views\ArticlesView;
+use App\Views\ArticlesView;
+
 
 require __DIR__.'/vendor/autoload.php';
+require_once './config/settings.php';
 
 $whoops = new \Whoops\Run;
+
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
@@ -21,7 +24,7 @@ $whoops->register();
     switch ($uri)
     {
         case "/":
-            echo "test";
+            $articles_controller->showArticlesList();
             break;
 
         default:
