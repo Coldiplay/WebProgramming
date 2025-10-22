@@ -1,12 +1,19 @@
 <?php
 
 namespace App\Views;
+use App\Core\FileManager;
+
 class ArticlesView
 {
     protected $html;
     public function showArticlesList(string $path, array $articles)//, array $articles)
     {
-        $data ='';
+        $manager = new FileManager();
+
+        $categories = $manager->listDirs('posts');
+
+        $data = implode('', $categories);
+        $data .= 'asdasd';
         foreach ($articles as $article) {
             $data .= '<div class="single-post">
                             <div class="blog-img">
