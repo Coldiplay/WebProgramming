@@ -107,4 +107,12 @@ class Article
     {
         $this->lines = $lines;
     }
+    public function getArticle($path)
+    {
+        $content = $this->fm->read($path);
+        if (!$content) return null;
+        $parts = explode("\n---\n", $content, 2);
+        $meta = json_decode($parts[0], true) ?: [];
+        return ['meta' => $meta, 'body' => $parts[1] ?? ''];
+    }
 }

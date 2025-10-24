@@ -8,12 +8,16 @@ class ArticlesView
     protected $html;
     public function showArticlesList(string $path, array $articles)//, array $articles)
     {
+        $data = '';
         $manager = new FileManager();
 
         $categories = $manager->listDirs('posts');
+//        foreach ($categories as $category) {
+//
+//        }
+        $files = $manager->listFiles('posts');
 
-        $data = implode('', $categories);
-        $data .= 'asdasd';
+        //$data = implode('', $files);
         foreach ($articles as $article) {
             $data .= '<div class="single-post">
                             <div class="blog-img">
@@ -33,5 +37,10 @@ class ArticlesView
         }
 
         print $this->html = include_once($path);
+    }
+
+    public function showArticle(?array $article)
+    {
+
     }
 }

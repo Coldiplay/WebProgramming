@@ -10,17 +10,18 @@ class ArticlesController
 {
     public Article $article;
     public ArticlesView $articleView;
+    private FileManager $fm;
 
     public function __construct(Article $article, ArticlesView $articleView)
     {
         $this->article = $article;
         $this->articleView = $articleView;
+        $this->fm = new FileManager();
 
     }
 
     public function showArticlesList()
     {
-        $manager = new FileManager();
         $articles = $this->article->getArticles();
 //        $articles = [];
 //        $categories = $manager->getCategories();
@@ -30,7 +31,14 @@ class ArticlesController
 
         //$articles = $this->articles->all();
 //        $path = $_SERVER['DOCUMENT_ROOT'] . '/templates/articles/articles_list.php';
-        $path = TEMPLATE_PATH. 'layout.php';
+        $path = TEMPLATE_PATH . 'layout.php';
         $this->articleView->showArticlesList($path, $articles);
     }
+    public function getAndShowArticle($path)
+    {
+       $article = $this->article->getArticle($path);
+       $this->articleView->showArticle($article);
+    }
+
+
 }

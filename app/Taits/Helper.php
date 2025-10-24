@@ -9,6 +9,6 @@ trait Helper
         echo '<pre>';
         var_dump($something);
         echo '</pre>';
-        exit();
+        //exit();
     }
 }

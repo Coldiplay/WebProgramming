@@ -5,61 +5,36 @@ use App\Taits\Helper;
 
 class FileManager
 {
-     use Helper;
-    private $dir = '';
+    use Helper;
+    public string $dir;
 
-    public function __constructor(string $dir = CONTENT_DIR)
+    public function __construct(string $dir = CONTENT_DIR)
     {
         $this->dir = $dir;
-        $this->GetCategories();
     }
 
-    public function GetCategories() : array
-    {
-        $array = [];
-        if (is_dir($this->dir)) {
-            if ($dh = opendir($this->dir)) {
-                while (($file = readdir($dh)) !== false) {
-                    if ($file != "." && $file != "..") continue;
-
-                    if (is_dir($file))
-                        $array[] = $file;
-                }
-            }
-        }
-        return $array;
-    }
     public function listDirs($path)
     {
-        $fullDir = CONTENT_DIR . ltrim($path, '/');
-        //$this->dd($fullDir);
+        $fullDir = $this->dir . ltrim($path, '/');
         if (!is_dir($fullDir)) return [];
         return array_filter(glob($fullDir . '/*'), 'is_dir');
     }
-    public function getArticlesInCategory(string $category) : array
+    public function listFiles(string $category = '', string $extension = '*')
     {
-        $array = [];
-        $dir = $this->dir.'/'.$category;
-        if (is_dir($dir)) {
-            if ($dh = opendir($dir)) {
-                while (($file = readdir($dh)) !== false) {
-                    if ($file != "." && $file != "..") continue;
-                    if (!is_dir($file)){
-                        $file_contents = file_get_contents($file);
-                        $endJsonPos = strpos($file_contents, "}");
-                        $firstPart = json_decode(substr($file_contents, 0, $endJsonPos-1));
-                        $contentMd = substr($file_contents, $endJsonPos+1, str_len($file)-$endJsonPos-1);
-                        $array[] = [
-                            'title' => $firstPart['title'],
-                            'content' => $contentMd,
-                            'image' => $firstPart['image'],
-                            'author' => $firstPart['author'],
-                            'authorImage' => $firstPart['authorImage'],
-                        ];
-                    }
-                }
-            }
+        $fullDir = $this->dir . ltrim($category, '/');
+        if (strpos(realpath($fullDir), $this->dir) !== 0) {
+            return false;
         }
-        return $array;
+        return array_filter(glob($fullDir . '/*'), 'is_file');
     }
+    public function readFile($path) {
+        $fullPath = $this->dir  . ltrim($path, '/');
+        // Защита от path traversal
+        if (strpos(realpath($fullPath), $this->dir) !== 0) {
+            return false;
+        }
+        if (!file_exists($fullPath)) return false;
+        return file_get_contents($fullPath);
+    }
+
 }
