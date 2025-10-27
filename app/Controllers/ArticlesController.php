@@ -22,17 +22,16 @@ class ArticlesController
 
     public function showArticlesList()
     {
-        $articles = $this->article->getArticles();
-//        $articles = [];
-//        $categories = $manager->getCategories();
-//        foreach ($categories as $category) {
-//            $articles[] = $manager->GetArticlesInCategory($category);
-//        }
-
+        $articles = $this->article->getArticlesFromFM("posts", $this->fm);
+        $categoriesPaths = $this->fm->listDirs('posts');
+        $categories = [];
+        foreach ($categoriesPaths as $categoryPath) {
+            $categories[] = ['title' => basename($categoryPath), 'countElements' => count($this->fm->listFiles($categoryPath))];
+        }
         //$articles = $this->articles->all();
-//        $path = $_SERVER['DOCUMENT_ROOT'] . '/templates/articles/articles_list.php';
+        //$path = $_SERVER['DOCUMENT_ROOT'] . '/templates/articles/articles_list.php';
         $path = TEMPLATE_PATH . 'layout.php';
-        $this->articleView->showArticlesList($path, $articles);
+        $this->articleView->showArticlesList($path, $articles, $categories);
     }
     public function getAndShowArticle($path)
     {

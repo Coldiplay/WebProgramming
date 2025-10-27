@@ -2,12 +2,18 @@
 
 namespace App\Model;
 
+use App\Core\FileManager;
+use App\Taits\Helper;
+use FastVolt\Helper\Markdown;
+
 class Article
 {
+    use Helper;
     public array $lines = [];
     protected array $articles = [];
     public int $imagePosition;
     public string $imageRoute;
+    public Markdown $markdown;
 
     public function __construct()
     {
@@ -84,7 +90,7 @@ class Article
                 ]
 
         ];
-
+        $this->markdown = new Markdown();
     }
 
     /**
@@ -94,25 +100,38 @@ class Article
     {
         return $this->articles;
     }
-    public function addLineByIndex(string $line, int $position) : void
+    public function getArticlesFromFM(string $category, FileManager $fileManager)
     {
-        $this->lines[$position][] = $line;
+        $articlesPaths = $fileManager->listFiles($category);
+        $articles = [];
+        if ($articlesPaths) {
+            foreach ($articlesPaths as $articlePath) {
+                $articles[] = $this->getArticle($articlePath, $fileManager);
+            }
+        }
+        return $articles;
     }
-    public function addLine(string $line) : void
-    {
-        $this->lines[] = $line;
-    }
+//    public function addLineByIndex(string $line, int $position) : void
+//    {
+//        $this->lines[$position][] = $line;
+//    }
+//    public function addLine(string $line) : void
+//    {
+//        $this->lines[] = $line;
+//    }
+//    public function changeLines(array $lines) : void
+//    {
+//        $this->lines = $lines;
+//    }
 
-    public function changeLines(array $lines) : void
+    public function getArticle($path, FileManager $fileManager)
     {
-        $this->lines = $lines;
-    }
-    public function getArticle($path)
-    {
-        $content = $this->fm->read($path);
+        $content = $fileManager->readFile('posts/' . basename($path));
         if (!$content) return null;
         $parts = explode("\n---\n", $content, 2);
         $meta = json_decode($parts[0], true) ?: [];
+        $this->markdown->setContent($parts[1]);
+//        $parts[1] = $this->markdown->toHtml();
         return ['meta' => $meta, 'body' => $parts[1] ?? ''];
     }
 }

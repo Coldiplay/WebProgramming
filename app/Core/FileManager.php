@@ -19,9 +19,9 @@ class FileManager
         if (!is_dir($fullDir)) return [];
         return array_filter(glob($fullDir . '/*'), 'is_dir');
     }
-    public function listFiles(string $category = '', string $extension = '*')
+    public function listFiles(string $path = '', string $extension = '*')
     {
-        $fullDir = $this->dir . ltrim($category, '/');
+        $fullDir = $this->dir . ltrim($path, '/');
         if (strpos(realpath($fullDir), $this->dir) !== 0) {
             return false;
         }

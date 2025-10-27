@@ -1,8 +1,8 @@
 {
-'title' : 'Image Post For Insurance Press',
-'image' : 'assets/images/slider-img.jpg',
-'author' : 'тётя Клава',
-'authorImage' : 'assets/images/people-03.jpg',
+"title": "Image Post For Insurance Press",
+"image": "assets/images/slider-img.jpg",
+"author": "тётя Клава",
+"authorImage": "assets/images/people-03.jpg"
 }
 ---
 ## Lorem ipsum dolor sit amet

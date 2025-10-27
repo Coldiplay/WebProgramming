@@ -90,9 +90,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-8">
-
-                        <?php echo $data; ?>
-
+                        <?php echo $articlesData; ?>
                         <div class="text-center">
                             <ul class="pagination ins-page">
                                 <li class="active"><span>Previous</span></li>
@@ -107,72 +105,7 @@
                         <div class="blog-post">
                             <h2>Categories</h2>
                             <ul class="category-post">
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>House Insurance</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(11)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>Travel Insurance</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(16)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>Life Insurance</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(16)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>Car Insurance</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(19)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>Business Insurance</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(22)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="inline-text">
-                                            <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>Marketing</h4>
-                                            <div class="margin-left-auto blue-text">
-                                                <span>(25)</span>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
+                                <?php echo $categoriesData; ?>
                             </ul>
                         </div>
                     </div>
