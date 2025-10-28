@@ -1,8 +1,10 @@
 {
+"id" : 1,
 "title": "Image Post For Insurance Press",
 "image": "assets/images/slider-img.jpg",
 "author": "тётя Клава",
-"authorImage": "assets/images/people-03.jpg"
+"authorImage": "assets/images/people-03.jpg",
+"date_created" : "2 Feb 2018"
 }
 ---
 ## Lorem ipsum dolor sit amet

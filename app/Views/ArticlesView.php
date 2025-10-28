@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Views;
-use App\Core\FileManager;
 use App\Taits\Helper;
 
 class ArticlesView
@@ -17,9 +16,9 @@ class ArticlesView
                                     <a href="#">
                                         <div class="inline-text">
                                             <i class="glyphicon glyphicon-play blue-text"></i>
-                                            <h4>'.$category.'</h4>
+                                            <h4>'.$category['title'].'</h4>
                                             <div class="margin-left-auto blue-text">
-                                                <span>(11)</span>
+                                                <span>'.$category['countElements'].'</span>
                                             </div>
                                         </div>
                                     </a>
@@ -34,7 +33,7 @@ class ArticlesView
                                 </a>
                             </div>
                             <h2 class="blog-title">'.$meta['title'].'</h2>
-                            <div class="blog-meta">2 Feb 2018 <a href="">(3) Comments</a></div>
+                            <div class="blog-meta">'.$meta['date_created'].' <a href="">(3) Comments</a></div>
                             <p>'.$article['body'].'</p>
                             <div class="blog-btn">
                                 <a href="#" class="btn-default">Подробнее</a>
@@ -49,18 +48,19 @@ class ArticlesView
 
     public function showArticle(string $path,?array $article)
     {
-        $data = '<div class="single-post">
+        $meta = $article['meta'];
+        $article_data = '<div class="single-post">
                             <div class="blog-img">
                                 <a href="">
-                                    <img src="'.$article['image'].'" class="img-responsive">
+                                    <img src="'.$meta['image'].'" class="img-responsive">
                                 </a>
                             </div>
-                            <h2 class="blog-title">'.$article['title'].'</h2>
-                            <div class="blog-meta">2 Feb 2018 <a href="">(3) Comments</a></div>
-                            <p>'.$article['content'].'</p>
+                            <h2 class="blog-title">'.$meta['title'].'</h2>
+                            <div class="blog-meta">' .$meta['date_created']. ' <a href="">(3) Comments</a></div>
+                            <p>'.$article['body'].'</p>
                             <div class="blog-btn">
                                 <a href="#" class="btn-default">Подробнее</a>
-                                <div class="img-inline"><img src="'.$article['authorImage'].'"><a href="#">'.$article['author'].'</a>
+                                <div class="img-inline"><img src="'.$meta['authorImage'].'"><a href="#">'.$meta['author'].'</a>
                                 </div>
                             </div>
                         </div>';

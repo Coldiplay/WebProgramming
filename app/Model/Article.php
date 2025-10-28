@@ -106,32 +106,20 @@ class Article
         $articles = [];
         if ($articlesPaths) {
             foreach ($articlesPaths as $articlePath) {
-                $articles[] = $this->getArticle($articlePath, $fileManager);
+                $articles[] = $this->getArticleFromFM($articlePath, $fileManager);
             }
         }
         return $articles;
     }
-//    public function addLineByIndex(string $line, int $position) : void
-//    {
-//        $this->lines[$position][] = $line;
-//    }
-//    public function addLine(string $line) : void
-//    {
-//        $this->lines[] = $line;
-//    }
-//    public function changeLines(array $lines) : void
-//    {
-//        $this->lines = $lines;
-//    }
 
-    public function getArticle($path, FileManager $fileManager)
+    public function getArticleFromFM($path, FileManager $fileManager)
     {
         $content = $fileManager->readFile('posts/' . basename($path));
         if (!$content) return null;
         $parts = explode("\n---\n", $content, 2);
         $meta = json_decode($parts[0], true) ?: [];
         $this->markdown->setContent($parts[1]);
-//        $parts[1] = $this->markdown->toHtml();
+        //$parts[1] = $this->markdown->toHtml();
         return ['meta' => $meta, 'body' => $parts[1] ?? ''];
     }
 }
