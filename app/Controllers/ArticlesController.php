@@ -24,20 +24,27 @@ class ArticlesController
     public function showArticlesList()
     {
         $articles = $this->article->getArticlesFromFM("posts", $this->fm);
+        $categories = $this->getCategories();
+        $path = TEMPLATE_PATH . 'layout.php';
+        $this->articleView->showArticlesList($path, $articles, $categories);
+    }
+    public function getAndShowArticle($article_path)
+    {
+       $article = $this->article->getArticleFromFM($article_path, $this->fm, true);
+       $categories = $this->getCategories();
+       $path = TEMPLATE_PATH . 'blog-details_Layout.php';
+       $this->articleView->showArticle($path ,$article, $categories);
+    }
+
+    private function getCategories(string $path = 'posts') : array
+    {
         $categoriesPaths = $this->fm->listDirs('posts');
         $categories = [];
         foreach ($categoriesPaths as $categoryPath) {
             $category_path = 'posts/' . basename($categoryPath);
             $categories[] = ['title' => basename($category_path), 'countElements' => count($this->fm->listFiles($category_path))];
         }
-        $path = TEMPLATE_PATH . 'layout.php';
-        $this->articleView->showArticlesList($path, $articles, $categories);
-    }
-    public function getAndShowArticle($article_path)
-    {
-       $article = $this->article->getArticleFromFM($article_path);
-       $path = TEMPLATE_PATH . 'single_Article_Layout.php';
-       $this->articleView->showArticle($path ,$article);
+        return $categories;
     }
 
 

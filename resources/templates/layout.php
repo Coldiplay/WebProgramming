@@ -24,57 +24,7 @@
 </head>
 
 <body data-spy="scroll" data-target=".navbar-fixed-top">
-    <header>
-        <div class="top-bar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 address">
-                        <i class="ti-location-pin"></i> Adress:
-                    </div>
-                    <div class="col-sm-6 social">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-github" ></i></a></li>
-                            <li><a href="#"><i class="fa fa-facebook-square"></i></a></li>
-                            <li><a href="#"><i class="fa fa-telegram" ></i></a></li>
-                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="index.html">
-                        Insurance<span>Press</span>
-                    </a>
-                    <p>Call Us Now <b>+215 (362) 4579</b></p>
-                </div>
-                <div class="collapse navbar-collapse navbar-main-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-                        <li>
-                            <a href="blog-details.html">Blog Details</a>
-                        </li>
-                        <li>
-                            <a href="contact-us.html">Contact</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <?php include_once('header.php')?>
     <div class="clear"></div>
     <div id="page-content">
         <section class="breadcrumb">
@@ -114,45 +64,7 @@
         </section>
     </div>
     <div class="clear"></div>
-    <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 col-lg-8">
-                    <ul class="footer-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="#">Compnies represented</a></li>
-                        <li><a href="contact-us.html">Contact us</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Products</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-2 col-lg-2 col-md-offset-2 col-lg-offset-2">
-                    <ul class="footer-social">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-6">
-                        Copyright &copy; 2018 distributed by <a href="https://themewagon.com/">ThemeWagon</a>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 text-right">
-                        <a href="#">Terms & Conditions</a>
-                        <a href="#">Policy</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <?php include_once ('footer.php')?>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>

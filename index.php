@@ -23,6 +23,10 @@ $whoops->register();
             $articles_controller->showArticlesList();
             break;
 
+        case "/article":
+            $articles_controller->getAndShowArticle('news-top.md');
+            break;
+
         default:
             echo $uri;
             break;

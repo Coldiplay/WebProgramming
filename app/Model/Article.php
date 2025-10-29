@@ -100,26 +100,28 @@ class Article
     {
         return $this->articles;
     }
-    public function getArticlesFromFM(string $category, FileManager $fileManager)
+    public function getArticlesFromFM(string $category, FileManager $fileManager, bool $decode_markdown = false): array
     {
         $articlesPaths = $fileManager->listFiles($category);
         $articles = [];
         if ($articlesPaths) {
             foreach ($articlesPaths as $articlePath) {
-                $articles[] = $this->getArticleFromFM($articlePath, $fileManager);
+                $articles[] = $this->getArticleFromFM($articlePath, $fileManager, $decode_markdown);
             }
         }
         return $articles;
     }
 
-    public function getArticleFromFM($path, FileManager $fileManager)
+    public function getArticleFromFM($path, FileManager $fileManager, bool $decode_markdown = false)
     {
         $content = $fileManager->readFile('posts/' . basename($path));
         if (!$content) return null;
         $parts = explode("\n---\n", $content, 2);
         $meta = json_decode($parts[0], true) ?: [];
-        $this->markdown->setContent($parts[1]);
-        //$parts[1] = $this->markdown->toHtml();
+        if ($decode_markdown) {
+            $this->markdown->setContent($parts[1]);
+            $parts[1] = $this->markdown->toHtml();
+        }
         return ['meta' => $meta, 'body' => $parts[1] ?? ''];
     }
 }
