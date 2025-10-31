@@ -1,16 +1,26 @@
 <?php
 
 namespace App\Views;
-use App\Taits\Helper;
+use App\Traits\Helper;
 
 class ArticlesView
 {
     use Helper;
     protected $html;
-    public function showArticlesList(string $path, array $articles, array $categories)//, array $articles)
+    public function showArticlesList(string $template_path, array $articles, array $categories)
     {
         $articlesData = $this->structArticlesIntoHtml($articles);
         $categoriesData = $this->structCategoriesIntoHtml($categories);
+        print $this->html = include_once($template_path);
+    }
+    public function showArticle(string $path, array $article, array $categories)
+    {
+        $article_data = $this->structSingleArticleIntoHtml($article);
+        $categories_data = $this->structCategoriesIntoHtml($categories);
+        print $this->html = include_once($path);
+    }
+    public function show404(string $path)
+    {
         print $this->html = include_once($path);
     }
 
@@ -79,10 +89,5 @@ class ArticlesView
         return $articleData;
     }
 
-    public function showArticle(string $path,?array $article, array $categories)
-    {
-        $article_data = $this->structSingleArticleIntoHtml($article);
-        $categories_data = $this->structCategoriesIntoHtml($categories);
-        print $this->html = include_once($path);
-    }
+
 }

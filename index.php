@@ -15,20 +15,23 @@ $whoops->register();
     $article = new Article();
     $articles_view = new ArticlesView();
     $articles_controller = new ArticlesController($article, $articles_view);
-
+    $selected_article = 'news-top.md';
+    $selected_category = '';
     $uri = $_SERVER['REQUEST_URI'];
     switch ($uri)
     {
         case "/":
-            $articles_controller->showArticlesList();
+            $articles_controller->showArticlesList('posts/' . $selected_category);
             break;
 
         case "/article":
-            $articles_controller->getAndShowArticle('news-top.md');
+            $articles_controller->getAndShowArticle($selected_article);
             break;
+        case "/category":
+
 
         default:
-            echo $uri;
+            $articles_controller->NotFound404();
             break;
     }
 ?>

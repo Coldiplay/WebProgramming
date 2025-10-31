@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Taits;
+namespace App\Traits;
 
 trait Helper
 {

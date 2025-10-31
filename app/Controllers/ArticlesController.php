@@ -4,7 +4,7 @@ namespace app\Controllers;
 
 use App\Core\FileManager;
 use app\Model\Article;
-use App\Taits\Helper;
+use App\Traits\Helper;
 use app\Views\ArticlesView;
 
 class ArticlesController
@@ -21,9 +21,9 @@ class ArticlesController
         $this->fm = new FileManager();
     }
 
-    public function showArticlesList()
+    public function showArticlesList(string $category_path = 'posts')
     {
-        $articles = $this->article->getArticlesFromFM("posts", $this->fm);
+        $articles = $this->article->getArticlesFromFM($category_path, $this->fm);
         $categories = $this->getCategories();
         $path = TEMPLATE_PATH . 'layout.php';
         $this->articleView->showArticlesList($path, $articles, $categories);
@@ -42,9 +42,13 @@ class ArticlesController
         $categories = [];
         foreach ($categoriesPaths as $categoryPath) {
             $category_path = 'posts/' . basename($categoryPath);
-            $categories[] = ['title' => basename($category_path), 'countElements' => count($this->fm->listFiles($category_path))];
+            $categories[] = ['title' => mb_convert_case(basename($category_path), MB_CASE_TITLE, "UTF-8"), 'countElements' => count($this->fm->listFiles($category_path))];
         }
         return $categories;
+    }
+    public  function NotFound404()
+    {
+        $this->articleView->show404(TEMPLATE_PATH . '404.php');
     }
 
 
