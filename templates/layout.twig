@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% block head %}
+    {% include("front/blocks/header.html.twig") %}
+{% endblock %}
+
+<body data-spy="scroll" data-target=".navbar-fixed-top">
+<header>
+    {% block top-bar %}
+        {% include("front/blocks/top-bar.html.twig") %}
+    {% endblock %}
+
+    {% block navbar %}
+        {% include("front/blocks/navbar.html.twig") %}
+    {% endblock %}
+
+</header>
+<div class="clear"></div>
+<div id="page-content">
+
+    <section class="breadcrumb">
+        <div class="container">
+            {% block breadcrumb %}
+            {% endblock %}
+{#            <h2>Blog Page</h2>#}
+{#            <ul>#}
+{#                <li><a href="index.html">Home</a> ></li>#}
+{#                <li><a href="#">Blog Page</a></li>#}
+{#            </ul>#}
+        </div>
+    </section>
+
+    <section class="blog-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <!--<?php //echo $articlesData; ?> -->
+                    <div class="text-center">
+                        <ul class="pagination ins-page">
+                            <li class="active"><span>Previous</span></li>
+                            <li><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#">Next</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                    <div class="col-sm-4">
+                        {% block sideBar %}
+                        {% endblock %}
+                    </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+<div class="clear"></div>
+
+{% block footer %}
+    {% include("front/blocks/footer.html.twig") %}
+{% endblock %}
+
+{% block java_script %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
+<script src="assets/js/custom.js"></script>
+{% endblock %}
+</body>
+</html>
