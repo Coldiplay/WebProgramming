@@ -1,0 +1,21 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+    <div class="col-sm-8">
+        <!--<?php //echo $articlesData; ?> -->
+        {% for article in articles %}
+            {% include("front/blocks/singleArticle.html.twig") %}
+        {% endfor %}
+
+
+        {% block navPages %}
+{#            {% include("front/blocks/navPages.html.twig") %}#}
+        {% endblock %}
+    </div>
+
+    <div class="col-sm-4">
+        {% block sideBar %}
+{#            {% include("front/blocks/sidebar/categories_side-bar.html.twig") %}#}
+        {% endblock %}
+    </div>
+{% endblock %}

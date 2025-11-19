@@ -7,7 +7,7 @@
 
 <body data-spy="scroll" data-target=".navbar-fixed-top">
 <header>
-    {% block top-bar %}
+    {% block top_bar %}
         {% include("front/blocks/top-bar.html.twig") %}
     {% endblock %}
 
@@ -34,24 +34,8 @@
     <section class="blog-page">
         <div class="container">
             <div class="row">
-                <div class="col-sm-8">
-                    <!--<?php //echo $articlesData; ?> -->
-                    <div class="text-center">
-                        <ul class="pagination ins-page">
-                            <li class="active"><span>Previous</span></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">Next</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                    <div class="col-sm-4">
-                        {% block sideBar %}
-                        {% endblock %}
-                    </div>
-
+                {% block content %}
+                {% endblock %}
             </div>
         </div>
     </section>

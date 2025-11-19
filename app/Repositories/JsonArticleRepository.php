@@ -4,14 +4,15 @@ namespace App\Repositories;
 
 use App\Core\FileManager;
 use App\Factories\ArticleFactory;
+use App\Interfaces\ArticleFactoryInterface;
 use App\Interfaces\ArticleRepositoryInterface;
 use App\Model\Article;
 
 class JsonArticleRepository implements ArticleRepositoryInterface
 {
     private string $file;
-    private ArticleFactory $factory;
-    public function __construct(ArticleFactory $factory, string $file = ROOT_DIR . '/storage/article.json')
+    private ArticleFactoryInterface $factory;
+    public function __construct(ArticleFactoryInterface $factory, string $file = ROOT_DIR . '/storage/article.json')
     {
         $this->factory = $factory;
         $this->file = $file;

@@ -14,6 +14,6 @@ class FrontView
 
     public function articlesList(array $articles): string
     {
-        return $this->twig->render('home.html', ['articles' => $articles]);
+        return $this->twig->render('front/pages/articlesList.html.twig', ['articles' => $articles]);
     }
 }

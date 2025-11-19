@@ -8,7 +8,7 @@ class Article
 {
     public int $id;
     public string $title;
-    public string $image;
+    public string $image_path;
     public string $content;
     public string $category;
     public string $author;
@@ -30,7 +30,7 @@ class Article
     {
         $this->id = $id;
         $this->title = $title;
-        $this->image = $image;
+        $this->image_path = $image;
         $this->content = $content;
         $this->category = $category;
         $this->author = $author;
