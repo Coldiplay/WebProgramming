@@ -4,17 +4,19 @@ namespace App\Factories;
 
 use App\Interfaces\ArticleFactoryInterface;
 use App\Model\Article;
+use App\Traits\Helper;
 use Michelf\Markdown;
 
 class ArticleFactory implements ArticleFactoryInterface
 {
+    use Helper;
     public function create(array $data): Article
     {
         return new Article
         (
             (int)$data['id'],
             (string)$data['title'],
-            (string)$data['image'],
+            (string)$data['image_path'],
             (string)(Markdown::defaultTransform($data['content'])),
             (string)$data['category'] ?? '',
             (string)$data['author'],

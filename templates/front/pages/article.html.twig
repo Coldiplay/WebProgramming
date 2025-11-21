@@ -5,17 +5,17 @@
         <div class="single-post">
             <div class="blog-img">
                 <a href="">
-                    <img src="{% article.image %}" class="img-responsive">
+                    <img src="{{ article.image }}" class="img-responsive">
                 </a>
                 <div class="blog-icon"><img src="images/icon2.png"></div>
             </div>
-            <h2 class="blog-title">{% article.title %}</h2>
+            <h2 class="blog-title">{{ article.title }}</h2>
             <div class="blog-meta">
-                <a href="" class="ml-0"><i class="blue-text fa fa-calendar"></i>{% article.date_created %}</a>
-                <a href=""><i class="blue-text fa fa-user"></i> By {% article.author %}</a>
+                <a href="" class="ml-0"><i class="blue-text fa fa-calendar"></i>{{ article.date_created }}</a>
+                <a href=""><i class="blue-text fa fa-user"></i> By {{ article.author }}</a>
                 <a href=""><i class="blue-text fa fa-comment"></i>(3) Comments</a>
             </div>
-            {% article.content %}
+            {{ article.content }}
         </div>
 
 

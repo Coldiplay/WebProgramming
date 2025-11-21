@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait Helper
 {
-    public function dd($something)
+    public static function dd($something)
     {
         echo '<pre>';
         var_dump($something);

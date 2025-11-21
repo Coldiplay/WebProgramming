@@ -36,6 +36,11 @@ $container->add(FrontController::class)
     ->addArgument($container->get(ArticleRepositoryInterface::class))
     ->addArgument($container->get(FrontView::class));
 
+//$container->get(ArticleRepositoryInterface::class)->
+
+
+
+
 $strategy = (new ApplicationStrategy)->setContainer($container);
 $router = (new Router)->setStrategy($strategy);
 

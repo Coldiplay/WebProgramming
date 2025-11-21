@@ -21,9 +21,9 @@ class Article
         string $title,
         string $image,
         string $content,
-        string $category = '',
         string $author,
         string $author_image,
+        string $category = '',
         //DateTime $date_created = new DateTime(),
         string $file_name = ''
     )

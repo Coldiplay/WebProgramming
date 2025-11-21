@@ -5,6 +5,7 @@ use App\Traits\Helper;
 
 class FileManager
 {
+    use Helper;
 //    use Helper;
 //    protected string $dir;
 //
@@ -42,9 +43,11 @@ class FileManager
 //    }
     public static function readFile(string $file_path) : ?string
     {
-        $fullPath = ROOT_DIR . ltrim($file_path, '/');
+        if (!$file_path == realpath($file_path)) {
+            $file_path = ROOT_DIR . ltrim($file_path, '/');
+        }
         //if ($this->checkPathTraversal($fullPath) || !file_exists($fullPath)) return false;
-        if (!file_exists($fullPath)) return false;
-        return file_get_contents($fullPath);
+        if (!file_exists($file_path)) return false;
+        return file_get_contents($file_path);
     }
 }

@@ -16,4 +16,9 @@ class FrontView
     {
         return $this->twig->render('front/pages/articlesList.html.twig', ['articles' => $articles]);
     }
+
+    public function singleArticle(?\App\Model\Article $article)
+    {
+        return $this->twig->render('front/pages/article.html.twig', ['article' => $article]);
+    }
 }

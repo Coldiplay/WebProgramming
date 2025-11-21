@@ -7,15 +7,23 @@ use App\Factories\ArticleFactory;
 use App\Interfaces\ArticleFactoryInterface;
 use App\Interfaces\ArticleRepositoryInterface;
 use App\Model\Article;
+use App\Traits\Helper;
 
 class JsonArticleRepository implements ArticleRepositoryInterface
 {
+    use Helper;
     private string $file;
     private ArticleFactoryInterface $factory;
-    public function __construct(ArticleFactoryInterface $factory, string $file = ROOT_DIR . '/storage/article.json')
+    public function __construct(ArticleFactoryInterface $factory, string $file = ROOT_DIR . 'storage/articles.json')
     {
         $this->factory = $factory;
         $this->file = $file;
+        if (!file_exists($file)) {
+            if (!is_dir($dir = dirname($file))) {
+                mkdir($dir);
+            }
+            file_put_contents($file, json_encode([]));
+        }
     }
 
     public function getAll(): array
@@ -28,8 +36,8 @@ class JsonArticleRepository implements ArticleRepositoryInterface
     {
         $articles = $this->read();
         foreach ($articles as $article) {
-            if ($article->id === $article_id) {
-                return $article;
+            if ($article['id'] === $article_id) {
+                return $this->factory->create($article);
             }
         }
         return null;
@@ -72,6 +80,9 @@ class JsonArticleRepository implements ArticleRepositoryInterface
 
     private function read() : array
     {
+        //$this->dd($this->file);
+        //$this->dd(json_decode(FileManager::readFile($this->file), true));
+        //exit();
         return json_decode(FileManager::readFile($this->file), true) ?: [];
     }
     private function write(array $articles) : void

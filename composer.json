@@ -1,12 +1,10 @@
 {
   "name": "vendor_name/html",
-  "description": "description",
-  "minimum-stability": "stable",
   "license": "proprietary",
   "authors": [
     {
-      "name": "user",
-      "email": "email@example.com"
+      "name": "coldiplay",
+      "email": "cvaba2005@gmail.com"
     }
   ],
   "autoload": {
