@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Image Post For Insurance Press",
+    "image_path": "assets/front/images/slider-img.jpg",
+    "content": "## Lorem ipsum dolor sit amet\n\n1. consectetur adipiscing elit. \n2. Mauris hendrerit fringilla ligula\n\nnec congue leosdsdsd pharetra in.\n### lorem ipsum dolor sit amet\n---\nconsectetur adipiscing elit \nMauris hendrerit fringilla ligula\nnec congue leo pharetra in.\n---",
+    "author": "тётя Клава",
+    "author_image": "assets/front/images/people-03.jpg",
+    "category" : null,
+    "file_name": null
+  },
+  {
+    "id": 2,
+    "title": "Image Post For Insurance Press",
+    "image_path": "assets/front/images/slider-img.jpg",
+    "content": "## Lorem ipsum dolor sit amet\n\n1. consectetur adipiscing elit. \n2. Mauris hendrerit fringilla ligula\n\nnec congue leosdsdsd pharetra in.\n### lorem ipsum dolor sit amet\n---\nconsectetur adipiscing elit \nMauris hendrerit fringilla ligula\nnec congue leo pharetra in.\n---",
+    "author": "тётя Клава",
+    "author_image": "assets/front/images/people-03.jpg",
+    "category" : null,
+    "file_name": null
+  }
+]
